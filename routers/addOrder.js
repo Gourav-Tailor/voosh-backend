@@ -10,10 +10,10 @@ router.post('/add-order', authenticateToken , (req,res)=>{
         {subTotal: sub_total,userId: req.user.userId, phoneNumber: phone_number},
       ])
         .then(data => {
-          res.json(data);
+          res.status(200).json(data);
         })
         .catch(err => {
-          res.json({ message: err });
+          res.status(500).json({ message: err });
         });
 });
 

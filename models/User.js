@@ -2,15 +2,27 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const UserSchema = new Schema({
-  _id: Number,
-  userId: Number,
-  name: String,
-  phoneNumber: Number,
-  password: String
+  userId: {
+    type: Number,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  phoneNumber: {
+    type: Number,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
 },
 {
-  versionKey: false // You should be aware of the outcome after set to false
+  versionKey: false
 });
+
 
 const User = model('users', UserSchema);
 module.exports = User;

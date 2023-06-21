@@ -12,14 +12,14 @@ router.post('/login-user', (req,res)=>{
                 if(data){
                     const token = jwt.sign({ userId: data.userId }, process.env.SECRET_KEY, { expiresIn: '1h' });
                     res.set('authorization', token);
-                    res.json({token});
+                    res.status(200).json({token});
                 }
                 else {
-                    res.json({ message: "Invaild Credentials" });
+                    res.status(500).json({ message: "Invaild Credentials" });
                 }
         })
         .catch(err => {
-            res.json({ message: err });
+            res.status(500).json({ message: err });
         });
 });
 

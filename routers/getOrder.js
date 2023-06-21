@@ -7,10 +7,10 @@ router.get('/get-order', authenticateToken , (req,res)=>{
 
     Order.find({userId: req.user.userId})
     .then(data => {
-        res.json(data);
+        res.status(200).json(data);
       })
       .catch(err => {
-        res.json({ message: err });
+        res.status(500).json({ message: err });
       });
 });
 
