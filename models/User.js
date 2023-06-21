@@ -3,6 +3,7 @@ const { Schema, model } = mongoose;
 
 const UserSchema = new Schema({
   _id: Number,
+  userId: Number,
   name: String,
   phoneNumber: Number,
   password: String

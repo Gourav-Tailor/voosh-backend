@@ -10,7 +10,7 @@ router.post('/login-user', (req,res)=>{
     User.findOne({phoneNumber: phone_number,password: password})
         .then(data => {
                 if(data){
-                    const token = jwt.sign({ phone_number }, process.env.SECRET_KEY, { expiresIn: '1h' });
+                    const token = jwt.sign({ userId: data.userId }, process.env.SECRET_KEY, { expiresIn: '1h' });
                     res.set('authorization', token);
                     res.json({token});
                 }

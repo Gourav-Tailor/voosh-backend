@@ -4,9 +4,8 @@ const Order = require("../models/Order");
 const  authenticateToken = require("../middleware/checkAuth");
 
 router.get('/get-order', authenticateToken , (req,res)=>{
-    const  { user_id } = req.body;
 
-    Order.find({userId: user_id})
+    Order.find({userId: req.user.userId})
     .then(data => {
         res.json(data);
       })
